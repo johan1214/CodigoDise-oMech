@@ -13,6 +13,8 @@ const int Echo3 = 12;   //Pin digital 12 para el Echo del sensor
 const int Motores= 10; //Pin digital 10 para los motores
 
 const int Camara= 14;
+
+const int Buzzer= 7;
 void setup() {
   Serial.begin(9600);//iniciailzamos la comunicación
   pinMode(Trigger1, OUTPUT); //pin como salida
@@ -25,6 +27,7 @@ void setup() {
   pinMode(Echo3, INPUT);  //pin como entrada
   pinMode(Camara, INPUT);
   pinMode(Motores, OUTPUT);
+  pinMode(Buzzer, OUTPUT);
   digitalWrite(Trigger3, LOW);//Inicializamos el pin con 0
 }
 
@@ -38,9 +41,11 @@ void loop()
   b=obtenerCamara(Camara);
   if(d1>= 30 && d2 >=30 && d3>=30){
     digitalWrite(Motores, LOW);
+    digitalWrite(Buzzer,HIGH);
   }
   else if(b){
     digitalWrite(Motores, LOW);
+    digitalWrite(Buzzer,HIGH);
   }
   else if{
     digitalWrite(Motores, HIGH);
@@ -70,3 +75,4 @@ bool obtenerCamara(int Camara){
   bool b=true;
   return b;
 }
+
